@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Peeps List</h1>
+
+{% for peep in peeps %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ peep.name }}</span>
+      <p>Title: {{ peep.title }}</p>
+      <p>Nickname: {{ peep.nickname }}</p>
+      {% if peep.age > 25 %}
+        <p>Age: {{ peep.age }}</p>
+      {% else %}
+        <p>Age: Junior</p>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
