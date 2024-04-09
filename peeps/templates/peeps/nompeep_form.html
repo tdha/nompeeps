@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if object %}
+    <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+    {% else %}
+    <h1>Add Peeps</h1>
+    {% endif %}
+    <form method="POST"> 
+        <!-- don't need to define action in form - default is same URL in Django -->
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        {% if object %}
+        <input type="submit" value="Update Peeps" class="btn">
+        {% else %}
+        <input type="submit" value="Create Peeps" class="btn">
+        {% endif %}
+    </form>
+
+{% endblock %}

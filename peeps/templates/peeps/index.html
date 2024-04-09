@@ -4,18 +4,16 @@
 <h1>Peeps List</h1>
 
 {% for peep in peeps %}
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ peep.name }}</span>
-      <p>Title: {{ peep.title }}</p>
-      <p>Nickname: {{ peep.nickname }}</p>
-      {% if peep.age > 25 %}
-        <p>Age: {{ peep.age }}</p>
-      {% else %}
-        <p>Age: Junior</p>
-      {% endif %}
+<a href="{% url 'detail' peep.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ peep.name }}</span>
+            <p>Date: {{ peep.date }}</p>
+            <p>Event: {{ peep.event }}</p>
+            <p>Notes: {{ peep.notes }}</p>
+        </div>
     </div>
-  </div>
+</a>
 {% endfor %}
 
 {% endblock %}

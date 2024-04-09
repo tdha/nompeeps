@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Peep Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ peeps.name }}</span>
+    <p>Date: {{ peeps.date }}</p>
+    <p>Event: {{ peeps.event }}</p>
+    <p>Notes: {{ peeps.notes }}</p>
+  </div>
+  <div class="card-action">
+    <a href="{% url 'peeps_update' peeps.id %}">Edit</a>
+    <a href="{% url 'peeps_delete' peeps.id %}">Delete</a>
+  </div>
+</div>
+
+{% endblock %}
