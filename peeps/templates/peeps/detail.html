@@ -3,17 +3,56 @@
 
 <h1>Peep Details</h1>
 
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ peeps.name }}</span>
-    <p>Date: {{ peeps.date }}</p>
-    <p>Event: {{ peeps.event }}</p>
-    <p>Notes: {{ peeps.notes }}</p>
-  </div>
-  <div class="card-action">
-    <a href="{% url 'peeps_update' peeps.id %}">Edit</a>
-    <a href="{% url 'peeps_delete' peeps.id %}">Delete</a>
-  </div>
+<div class="row">
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ peeps.name }}</span>
+                <p>Date: {{ peeps.date }}</p>
+                <p>Event: {{ peeps.event }}</p>
+                <p>Notes: {{ peeps.notes }}</p>
+            </div>
+            <div class="card-action">
+                <a href="{% url 'peeps_update' peeps.id %}">Edit</a>
+                <a href="{% url 'peeps_delete' peeps.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="col s6">
+        <form action="{% url 'add_reminder' peeps.id %}" method="POST">
+            {% csrf_token %}
+            {{ reminder_form.as_p }}
+            <input type="submit" class="btn" value="Add Reminder">
+        </form>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Place</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reminder in peeps.reminder_set.all %}
+                <tr>
+                    <td>{{ reminder.thatdate }}</td>
+                    <td>{{ reminder.place }}</td>
+                    <td>{{ reminder.mentalnote }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<script>
+    const dateElement = document.getElementById('id_thatdate');
+    M.Datepicker.init(dateElement, {
+        format: 'yyyy-mm-dd',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    })
+</script>
 
 {% endblock %}

@@ -12,6 +12,20 @@ class Nompeep(models.Model):
 
     def __str__(self):
         if self.event:
-            return f"Met {self.name} at {self.event} on {self.date}."
+            return f"{self.name} from {self.event} back on {self.date}."
         else:
-            return f"Met {self.name} on {self.date}."
+            return f"{self.name} back on {self.date}."
+        
+
+class Reminder(models.Model):
+    thatdate = models.DateField('Reminder date')
+    place = models.CharField(max_length=128)
+    mentalnote = models.TextField('Mental note', max_length=512)
+
+    nompeep = models.ForeignKey(Nompeep, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Reminder that on {self.thatdate} at {self.place}, re {self.nompeep}"
+    
+    class Meta:
+        ordering = ['-thatdate']

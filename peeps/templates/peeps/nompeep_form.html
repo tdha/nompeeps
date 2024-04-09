@@ -19,4 +19,14 @@
         {% endif %}
     </form>
 
+    <script>
+        const dateElement = document.getElementById('id_date');
+        M.Datepicker.init(dateElement, {
+            format: 'yyyy-mm-dd',
+            defaultDate: new Date(),
+            setDefaultDate: true,
+            autoClose: true
+        })
+    </script>
+
 {% endblock %}
