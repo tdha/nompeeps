@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Nompeep, Reminder
+from .models import Nompeep, Reminder, Group
 from .forms import ReminderForm
 
 def home(request):
@@ -53,3 +54,24 @@ class NompeepUpdate(UpdateView):
 class NompeepDelete(DeleteView):
     model = Nompeep
     success_url = '/peeps/'
+
+# GROUP ################################
+
+class GroupList(ListView):
+    model = Group
+    fields = '__all__'
+
+class GroupDetail(DetailView):
+    model = Group
+
+class GroupCreate(CreateView):
+    model = Group
+    fields = '__all__'
+
+class GroupUpdate(UpdateView):
+    model = Group
+    fields = '__all__'
+
+class GroupDelete(DeleteView):
+    model = Group
+    success_url = '/groups/'

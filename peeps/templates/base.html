@@ -19,9 +19,11 @@
           <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;NomPeeps</a></li>
         </ul>
         <ul class="right">
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'peeps_create' %}">Add Peeps</a></li>
           <li><a href="{% url 'index' %}">Peeps</a></li>
+          <li><a href="{% url 'peeps_create' %}">Add Peeps</a></li>
+          <li><a href="{% url 'groups_index' %}">Groups</a></li>
+          <li><a href="{% url 'groups_create' %}">Add Group</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
         </ul>
       </div>
     </nav>
