@@ -35,12 +35,12 @@ def add_reminder(request, peeps_id):
             return redirect('detail', peeps_id=peeps_id)
     return redirect('detail', peeps_id=peeps_id)
 
-    # form = ReminderForm(request.POST)
-    # if form.is_valid():
-    #     new_reminder = form.save(commit=False)
-    #     new_reminder.peeps_id = peeps_id
-    #     new_reminder.save()
-    # return redirect('detail', peeps_id=peeps_id)
+        # form = ReminderForm(request.POST)
+        # if form.is_valid():
+        #     new_reminder = form.save(commit=False)
+        #     new_reminder.peeps_id = peeps_id
+        #     new_reminder.save()
+        # return redirect('detail', peeps_id=peeps_id)
 
 class NompeepCreate(CreateView):
     model = Nompeep

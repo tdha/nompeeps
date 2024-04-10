@@ -1,5 +1,9 @@
 from django.db import models # database name is nompeeps
 from django.urls import reverse
+from django.utils import timezone
+
+from datetime import date, timedelta
+
 
 class Nompeep(models.Model):
     name = models.CharField(max_length=128)
@@ -16,6 +20,17 @@ class Nompeep(models.Model):
         else:
             return f"{self.name} back on {self.date}."
         
+    def contact_since(self, days=30):
+        today = timezone.now().date()
+
+        if (today - self.date).days <= days:
+            return False 
+        
+        latest_reminder = self.reminder_set.order_by('-thatdate').first()
+        if latest_reminder and (today - latest_reminder.thatdate).days <= days:
+            return False 
+        
+        return True
 
 class Reminder(models.Model):
     thatdate = models.DateField('Reminder date')
