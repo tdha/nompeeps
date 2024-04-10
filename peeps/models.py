@@ -55,7 +55,7 @@ class Reminder(models.Model):
     nompeep = models.ForeignKey(Nompeep, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Reminder that on {self.thatdate} at {self.place}, re {self.nompeep}"
+        return f"Reminder re {self.nompeep} on {self.thatdate}."
     
     class Meta:
         ordering = ['-thatdate']
