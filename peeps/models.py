@@ -1,6 +1,7 @@
 from django.db import models # database name is nompeeps
 from django.urls import reverse
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 from datetime import date, timedelta
 
@@ -26,6 +27,7 @@ class Nompeep(models.Model):
     event = models.CharField(max_length=256, blank=True)
     notes = models.TextField(max_length=512, blank=True)
     groups = models.ManyToManyField(Group)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={ 'peeps_id': self.id })

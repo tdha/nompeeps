@@ -2,13 +2,27 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-  }
-  
-  main {
+}
+
+main {
     flex: 1 0 auto;
-  }
-  
-  footer.page-footer {
+}
+
+footer.page-footer {
     padding-top: 0;
     text-align: right;
-  }
+}
+
+#logout-form {
+    display: inline;
+}
+
+#logout-form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+    color: white;
+    padding: 0 15px;
+}
